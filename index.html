@@ -67,8 +67,16 @@
     });
 
     yesButton.addEventListener('click', () => {
-        imageDisplay.src = './assets/love.gif';
-        valentineQuestion.textContent = "I love you!!";
+        if (noClickCount > 15) {
+            valentineQuestion.textContent = `You must be really dedicated to click no ${noClickCount} times!!`;
+            imageDisplay.src = './assets/impressed.gif';
+        } else if (noClickCount > 0 && noClickCount <= 15) {
+            valentineQuestion.textContent = `I love you! But you clicked no ${noClickCount} times :(`;
+            imageDisplay.src = './assets/sad.gif';
+        } else {
+            valentineQuestion.textContent = "I love you!! Happy Valentines Day!";
+            imageDisplay.src = './assets/love.gif';
+        }
         responseButtons.style.display = 'none';
         confetti();
     });
